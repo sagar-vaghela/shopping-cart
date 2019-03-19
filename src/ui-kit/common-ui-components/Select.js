@@ -13,7 +13,7 @@ class Select extends Component {
   }
 
   render() {
-    const { options, disabled, className } = this.props;
+    const { options, disabled, className, id } = this.props;
     const { defaultValue, value } = this.state;
 
     return (
@@ -25,6 +25,7 @@ class Select extends Component {
         // onBlur={this.handleChange}
         options={options}
         disabled={disabled}
+        id={id}
       >
         {defaultValue && <option value="">{defaultValue}</option>}
         {options.map(option => (
@@ -51,7 +52,8 @@ Select.propTypes = {
   defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  value: PropTypes.any
+  value: PropTypes.any,
+  id: PropTypes.string
 };
 
 export default Select;

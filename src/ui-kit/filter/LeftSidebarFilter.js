@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Select, Input, Button } from "../common-ui-components";
+import { AutosuggestElement } from "../common-ui-components";
+import { connect } from "react-redux";
+import { getProductType } from "../../actions";
 
 class LeftSidebarFilter extends Component {
   constructor(props) {
@@ -14,14 +16,23 @@ class LeftSidebarFilter extends Component {
     };
   }
 
+  handelChange(data){
+    console.log(data);
+  }
+
   render() {
     const {
       filters,
+      products
     } = this.props;
 
+    console.log(products);
+    
     return (
       <div>
-        {filters.map(filter => {
+        <AutosuggestElement suggestionValues={products} placeholder="Select Product" onChange={this.handelChange} />
+        <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+        {/* {filters.map(filter => {
           return (
             <div className="filter-wrapper" key={filter.name}>
               <div className={filter.className}>{filter.name}</div>
@@ -46,9 +57,13 @@ class LeftSidebarFilter extends Component {
               )}
             </div>
           );
-        })}
+        })} */}
       </div>
     );
+  }
+
+  componentDidMount = () => {
+    this.props.getProductType();    
   }
 
   handleOnChange = filter => {
@@ -92,6 +107,21 @@ LeftSidebarFilter.propTypes = {
   handleResetFilterClick: PropTypes.func,
   handleApplyClick: PropTypes.func,
   filterApply: PropTypes.bool,
+  products: PropTypes.any
 };
 
-export default LeftSidebarFilter;
+
+const mapStateToProps = state => ({
+  items: state.itemData.items,
+  cartData: state.cartData,
+  products: state.productData.products
+});
+
+const mapDispatchToProps = {
+  getProductType
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LeftSidebarFilter);

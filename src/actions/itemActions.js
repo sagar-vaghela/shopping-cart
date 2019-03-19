@@ -1,5 +1,5 @@
 import * as types from "../lib/constants";
-import { products } from "../mock";
+import { products, productType } from "../mock";
 
 // Get Items
 const getItemsStarted = () => ({
@@ -29,3 +29,17 @@ export const getItems = () => {
     dispatch(getItemsFailed("error.response"));
   };
 };
+
+
+// export const getProductList = () => {
+//   return dispatch => {
+//     // Used for Start Fetching Data
+//     dispatch(getItemsStarted());
+    
+//     // Used when get Success Response
+//     dispatch(getItemsSucceeded(productType));
+
+//     // Used when get error 
+//     dispatch(getItemsFailed("error.response"));
+//   };
+// };

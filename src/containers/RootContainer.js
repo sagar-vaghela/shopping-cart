@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { getItems } from "../actions";
+import { 
+  getItems, 
+  addToCart,
+  remvoeToCart 
+} from "../actions";
 
 import {
   DashboardRoutes,
@@ -20,16 +24,18 @@ class RootContainer extends Component {
   }
 
   render() {
-    const  { items } = this.props;
+    const { items, cartData } = this.props;
     return (
       <div>
-        <Header />
+        <Header cartData={cartData} />
         <div className="container-fluid main-container">
           <div className="row col-12">
             <div className="col-12 col-md-3 col-xl-2 bd-sidebar">
               <LeftSideBar handleApplyClick={this.getFilter} />
             </div>
-              <DashboardRoutes items={items} />
+            <main className="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content">
+              <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart}/>
+            </main>
           </div>
         </div>
         <Footer />
@@ -41,25 +47,45 @@ class RootContainer extends Component {
     this.props.getItems();
   }
 
-  
-  getFilter = (filterData) => {
-    //list of array data as object & calling API
-    console.log(filterData);
+  handleAddToCart = (e) => {
+    let id = e.target.id; 
+
+    const { cartData, items } = this.props;
+    
+    let itemData = items.filter(i => i.id !== parseInt(id));
+
+    console.log(itemData);
+    
+
+    let count = cartData.cartCount + 1;
+
+    let paylod = { itemData , count }
+
+    this.props.addToCart(paylod);
   }
 
+  getFilter = (filterData) => {
+    //list of array data as object & calling API
+  }
 }
 
 RootContainer.propTypes = {
   getItems: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  cartData: PropTypes.any,
+  removeToCart: PropTypes.func.isRequired,
   items: PropTypes.any
 };
 
 const mapStateToProps = state => ({
-  items: state.itemData.items
+  items: state.itemData.items,
+  cartData: state.cartData
 });
 
 const mapDispatchToProps = {
-  getItems
+  getItems,
+  addToCart,
+  remvoeToCart
 };
 
 export default connect(

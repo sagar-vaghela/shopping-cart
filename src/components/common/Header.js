@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-// import { NavItem } from "react-bootstrap";
 import PropTypes from "prop-types";
+import { Badge } from "../../ui-kit/common-ui-components";
 
 class Header extends Component {
   render() {
+    const { cartData } = this.props;
     return (
       <header>
         <nav className="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
@@ -14,9 +15,11 @@ class Header extends Component {
           <div className="collapse navbar-collapse justify-content-end" id="navbarToggler">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <span className="nav-link active"> <i className="fa fa-shopping-cart"></i> My Cart </span>
+                <span className="nav-link active"> <Badge count={cartData.cartCount} /> <i className="fa fa-shopping-cart"></i> My Cart </span>
               </li>
             </ul>
+            {
+            /* 
             <div className="btn-group">
               <button type="button" className="btn dropdown-toggle btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i className="fa fa-user"></i> John Doe
@@ -27,38 +30,17 @@ class Header extends Component {
                 <button className="dropdown-item" type="button">Log Out</button>
               </div>
             </div>
-          </div>
+            */
+            }
+          </div> 
         </nav>
       </header>
-
-      //   <header className="fixed">
-      //   <nav className="navbar navbar-default">
-      //     <div className="container">
-      //       <div className="row">
-      //         <div className="navbar-header">
-      //           {"Name: Pravin"}            
-      //         </div>
-      //         <div
-      //           className="collapse navbar-collapse"
-      //           id="bs-example-navbar-collapse-1"
-      //         >
-      //           <ul className="nav navbar-nav pull-right">
-      //             <NavItem
-      //               className={`menu_home`}
-      //             >
-      //               {"Cart"}
-      //             </NavItem>
-      //           </ul>
-      //         </div>
-      //       </div>
-      //     </div>
-      //   </nav>
-      // </header>
     );
   }
 }
 
 Header.propTypes = {
+  cartData: PropTypes.any
 };
 
 export default Header;

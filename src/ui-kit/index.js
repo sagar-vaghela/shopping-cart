@@ -4,5 +4,7 @@ export {
     Input,
     Select,
     Button,
-    Label
+    Label,
+    AutosuggestElement,
+    Badge
  } from "./common-ui-components";
