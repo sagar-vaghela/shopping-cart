@@ -14,15 +14,15 @@ class Header extends Component {
           <div className="collapse navbar-collapse justify-content-end" id="navbarToggler">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <span className="nav-link active"> <i class="fa fa-shopping-cart"></i> My Cart </span>
+                <span className="nav-link active"> <i className="fa fa-shopping-cart"></i> My Cart </span>
               </li>
             </ul>
             <div className="btn-group">
               <button type="button" className="btn dropdown-toggle btn-secondary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-user"></i> John Doe
+                <i className="fa fa-user"></i> John Doe
               </button>
               <div className="dropdown-menu dropdown-menu-right">
-                <button className="dropdown-item" type="button"><i class="fa fa-user"></i> My Profile</button>
+                <button className="dropdown-item" type="button"><i className="fa fa-user"></i> My Profile</button>
                 <div className="dropdown-divider"></div>
                 <button className="dropdown-item" type="button">Log Out</button>
               </div>

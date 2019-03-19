@@ -234,6 +234,19 @@ footer {
 .main-container, .main-container #sticky-sidebar{
   min-height: 834px;
 }
-#sticky-sidebar{
-  border-right: 1px solid #ddd;
+.bd-sidebar {
+  border-right: 1px solid rgba(0,0,0,.1);
+  height: calc(100vh - 2rem);
+}
+.productImgThumbnail{
+  height: 200px;
+  width: 200px;
+}
+#productListSort{
+  text-align: right;
+}
+#productListSort select{
+  width: auto;
+  display: inline-block;
+  margin-left: 10px;
 }

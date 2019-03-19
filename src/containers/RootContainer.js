@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import { getItems } from "../actions";
+
 import {
-    DashboardRoutes,
-    LeftSideBar
+  DashboardRoutes,
+  LeftSideBar
 } from "../routes";
 
 import { Header, Footer } from "../components";
@@ -11,47 +15,54 @@ class RootContainer extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      items: null
     };
   }
 
+  render() {
+    const  { items } = this.props;
+    return (
+      <div>
+        <Header />
+        <div className="container-fluid main-container">
+          <div className="row col-12">
+            <div className="col-12 col-md-3 col-xl-2 bd-sidebar">
+              <LeftSideBar handleApplyClick={this.getFilter} />
+            </div>
+              <DashboardRoutes items={items} />
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  componentDidMount = () => {
+    this.props.getItems();
+  }
+
+  
   getFilter = (filterData) => {
     //list of array data as object & calling API
     console.log(filterData);
   }
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <div class="container-fluid" className="main-container">
-          <div class="row col-12">
-              <div class="col-3 position-fixed" id="sticky-sidebar">
-                <LeftSideBar handleApplyClick={this.getFilter} />
-              </div>
-              <div class="col-9" id="main">
-              </div>
-          </div>
-      </div>
-            {/* <section className="main-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="left_menu_second no-padding">
-                          <LeftSideBar handleApplyClick={this.getFilter} />
-                        </div>
-                        <div>
-                            <DashboardRoutes />
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-        <Footer />
-      </div>
-    );
-  }
 }
 
-// RootContainer.propTypes = {
-//   history: PropTypes.any
-// };
+RootContainer.propTypes = {
+  getItems: PropTypes.func.isRequired,
+  items: PropTypes.any
+};
 
-export default RootContainer;
+const mapStateToProps = state => ({
+  items: state.itemData.items
+});
+
+const mapDispatchToProps = {
+  getItems
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RootContainer);

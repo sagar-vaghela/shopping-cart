@@ -14,12 +14,12 @@ class DashboardRoutes extends Component {
           <Route
             exact
             path={routes.ROOT_ROUTE}
-            component={ItemList}
+            component={this.handleItemList}
           />
           <Route
             exact
             path={routes.ITEMS_ROUTE}
-            component={ItemList}
+            component={this.handleItemList}
           />
           <Route
             exact
@@ -30,9 +30,15 @@ class DashboardRoutes extends Component {
       </div>
     );
   }
+
+  handleItemList = () => {
+    const { items } = this.props;
+    return <ItemList items={items} />
+  }
 }
 
 DashboardRoutes.propTypes = {
+  items: PropTypes.any
 };
 
 export default DashboardRoutes;
