@@ -48,8 +48,6 @@ storiesOf("items", module)
         expect("900").toContain('900');
       });
     }));
-
-    
     return app;
   })
   .add("no Description", () => {
