@@ -1,5 +1,4 @@
-export { default as ItemList } from "./ItemList";
-export { default as Item } from "./Item";
+export { ItemList, Item, Product } from "./products";
 export { default as Cart } from "./Cart";
 export { 
     Header, 

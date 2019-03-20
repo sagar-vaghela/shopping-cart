@@ -9,7 +9,7 @@ import {
   withKnobs,
   object
 } from '@storybook/addon-knobs/react';
-import Item from '../components/Item';
+import { Item } from '../components';
 
 export const item = {
   id: 1,
