@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import * as routes from "../lib/constants";
 
-import { ItemList, Item } from "../components";
+import { ItemList, Item, Cart } from "../components";
 
 class DashboardRoutes extends Component {
   render() {
@@ -25,6 +25,11 @@ class DashboardRoutes extends Component {
             exact
             path={routes.ITEM_ROUTE}
             component={Item}
+          />
+          <Route
+            exact
+            path={routes.CART_ROUTE}
+            component={Cart}
           />
         </Switch>
       </div>

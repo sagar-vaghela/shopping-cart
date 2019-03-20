@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Select, Button } from "../ui-kit";
-
+import { Select } from "../ui-kit";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
+import Item from "./Item";
 
 class ItemList extends Component {
   constructor() {
@@ -32,45 +37,35 @@ class ItemList extends Component {
     const { items } = this.props;
     return (
       <div>
-        { items && this.handleRenderItemList() }
-        {!items && <p>No Data found to display</p> }
+        {items && this.handleRenderItemList()}
+        {!items && <p>No Data found to display</p>}
       </div>
     );
   }
 
   handleRenderItemList = () => {
-    const  { items, handleAddToCart } = this.props;
+    const { items, handleAddToCart } = this.props;
     const { sortOptions } = this.state;
-  
+
     return (
       <div>
-      {
-      <div className="form-group" id="productListSort">
-        <label>Sort By</label>
-        <Select options={sortOptions} className="form-control" id="productListSortBy" onChange={this.handleOnChange} />
-      </div> 
-      }
-      <div className="list-group">
         {
-          items.map(item => {
-            return (
-              <a href="#" className="list-group-item list-group-item-action flex-column align-items-start" key={item.id}>
-                <div className="d-flex w-100 justify-content-between">
-                  <h5 className="mb-1">{item.name}</h5>
-                  <small>Price: {item.price} <i className="fa fa-inr"></i></small>
-                </div>
-                <p className="mb-1">
-                  <img src="https://5.imimg.com/data5/EF/RQ/MY-3030942/lenovo-desktop-computer-500x500.jpg" className="productImgThumbnail" />
-                  {item.description}
-                </p>
-                <Button type="button" className="btn btn-info pull-right" text="Add to cart" id={item.id} onClick={handleAddToCart} />
-              </a>
-            )
-          })
+          <div className="form-group" id="productListSort">
+            <label>Sort By</label>
+            <Select options={sortOptions} className="form-control" id="productListSortBy" onChange={this.handleOnChange} />
+          </div>
         }
+        <div className="list-group">
+          {
+            items.map(item => {
+              return (
+                <Item  item = {item} handleAddToCart = {this.props.handleAddToCart} />
+              )
+            })
+          }
+        </div>
       </div>
-    </div>
-  
+
     )
   }
 

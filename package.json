@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@storybook/addon-knobs": "^5.0.3",
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
@@ -12,6 +13,7 @@
     "react": "^16.8.4",
     "react-autosuggest": "^9.4.3",
     "react-bootstrap": "^1.0.0-beta.5",
+    "react-chromatic": "^0.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.4.0",
@@ -19,6 +21,8 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "require-context.macro": "^1.0.4",
+    "storybook": "^1.0.0",
     "typescript": "^3.3.3333"
   },
   "scripts": {
