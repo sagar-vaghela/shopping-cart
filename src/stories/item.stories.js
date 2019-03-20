@@ -3,27 +3,27 @@ import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
 import { Item } from "../components";
 import { specs, describe, it } from 'storybook-addon-specifications'
-import {mount} from "enzyme";
 import expect from "expect";
+import * as images from "../lib/constants";
 
-export const item = {
+export const item =    {
   id: 1,
-  name: "Apple iPhone Xs Max",
-  image: "appleIphoneXS.png",
-  description: "Facial Recognition, Fingerprint Scanner",
-  brand: "Apple",
+  name: 'Apple iPhone Xs Max',
+  image: `${images.appleIphoneXS}`,
+  description: 'Facial Recognition, Fingerprint Scanner',
+  brand: 'Apple',
   price: 99000,
-  type: "Mobile"
+  type: 'Mobile',
 };
 
-export const itemnoDiscription = {
+export const itemnoDiscription =     {
   id: 1,
-  name: "Apple",
-  image: "appleIphoneXS.png",
-  description: "",
-  brand: "Apple",
-  price: 900,
-  type: "Mobile"
+  name: 'Apple iPhone Xs Max',
+  image: `${images.appleIphoneXS}`,
+  description: 'Facial Recognition, Fingerprint Scanner',
+  brand: 'Apple',
+  price: 99000,
+  type: 'Mobile',
 };
 
 storiesOf("items", module)
