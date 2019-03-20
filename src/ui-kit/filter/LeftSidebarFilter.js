@@ -8,16 +8,8 @@ class LeftSidebarFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterData: [],
-      offerTagList: [],
-      offerTag: [],
-      inquiryTagList: [],
-      inquiryTag: [],
+      filterData: null
     };
-  }
-
-  handelChange(data){
-    console.log(data);
   }
 
   render() {
@@ -26,13 +18,12 @@ class LeftSidebarFilter extends Component {
       products
     } = this.props;
 
-    console.log(products);
-    
     return (
       <div>
         <AutosuggestElement suggestionValues={products} placeholder="Select Product" onChange={this.handelChange} />
-        <button type="button" className="btn btn-info"><i className="fa fa-search"></i></button>
-        {/* {filters.map(filter => {
+        <button type="button" className="btn btn-info" onClick={this.handleApplyClick} ><i className="fa fa-search"></i></button>
+        {/* 
+        {filters.map(filter => {
           return (
             <div className="filter-wrapper" key={filter.name}>
               <div className={filter.className}>{filter.name}</div>
@@ -64,6 +55,18 @@ class LeftSidebarFilter extends Component {
 
   componentDidMount = () => {
     this.props.getProductType();    
+  }
+
+  handelChange = (filterData) => {
+    this.setState({filterData})
+  }
+
+  handleApplyClick = () => {
+    const { filterData } = this.state;
+    if (filterData && filterData.suggestions.length !== 0 && filterData.suggestions[0].name )
+    {
+      this.props.handleApplyClick(filterData.suggestions[0].name);
+    }
   }
 
   handleOnChange = filter => {

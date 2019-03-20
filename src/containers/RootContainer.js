@@ -49,21 +49,19 @@ class RootContainer extends Component {
 
   handleAddToCart = (e) => {
     let id = e.target.id; 
-
     const { cartData, items } = this.props;
-    
     let itemData = items.filter(i => i.id !== parseInt(id));
-
     let count = cartData.cartCount + 1;
-
     let paylod = { itemData , count }
-
     this.props.addToCart(paylod);
     this.props.getItems(itemData);
   }
 
   getFilter = (filterData) => {
-    //list of array data as object & calling API
+    //list of array data as object & calling API.
+    const { items } = this.props;
+    let itemData = items.filter(i => i.type === filterData);
+    this.props.getItems(itemData);
   }
 }
 

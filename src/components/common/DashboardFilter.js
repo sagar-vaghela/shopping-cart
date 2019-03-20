@@ -11,7 +11,6 @@ class DashboardFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterApply: false,
       filData: [],
     };
   }
@@ -26,6 +25,8 @@ class DashboardFilter extends Component {
           items: staticData
         },
       ];
+
+      const { handleApplyClick } = this.props;
   
     return (
       <div>
@@ -35,9 +36,7 @@ class DashboardFilter extends Component {
               filters={Filters}
               onChange={this.handleOnChange}
               filterApply={this.state.filterApply}
-              handleSelect={this.handleSelect}
-              handleLanguageSwitch={this.handleLanguageSwitch}
-              isNotFilter={false}
+              handleApplyClick={handleApplyClick}
             />
           </div>
         ) : (
@@ -46,10 +45,6 @@ class DashboardFilter extends Component {
       </div>
     );
   }
-
-  handleResetFilterClick = () => {
-    this.setState({ filterApply: false });
-  };
 
   handleApplyClick = () => {
     this.setState({ filterApply: true });
@@ -63,6 +58,7 @@ class DashboardFilter extends Component {
   handleSelect = filterData => {
     this.setState({ filData: filterData });
   };
+
 }
 
 DashboardFilter.propTypes = {
