@@ -1,5 +1,3 @@
-export { LeftSidebarFilter } from "./filter";
-
 export { 
     Input,
     Select,

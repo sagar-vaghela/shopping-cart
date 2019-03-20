@@ -1,68 +1,61 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { LeftSidebarFilter } from "../../ui-kit";
-
-const staticData = [
-    { name: "option1", className: "", value: "option1" },
-  { name: "option2", className: "", value: "option2" }
-];
+import { connect } from "react-redux";
+import { AutosuggestElement } from "../../ui-kit";
+import { getProductType } from "../../actions";
 
 class DashboardFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filData: [],
     };
   }
 
   render() {
 
-    const Filters = [
-        {
-          name: "Category",
-          className: "filter-title",
-          type: "select",
-          items: staticData
-        },
-      ];
-
-      const { handleApplyClick } = this.props;
+      const { products } = this.props;
   
     return (
-      <div>
-        {Filters.length > 0 ? (
-          <div className="left-filters">
-            <LeftSidebarFilter
-              filters={Filters}
-              onChange={this.handleOnChange}
-              filterApply={this.state.filterApply}
-              handleApplyClick={handleApplyClick}
-            />
-          </div>
-        ) : (
-          ""
-        )}
+      <div className="left-filters">
+        <AutosuggestElement suggestionValues={products} placeholder="Select Product" onChange={this.handelChange} />
+        <button type="button" className="btn btn-info" onClick={this.handleApplyClick} ><i className="fa fa-search"></i></button>
       </div>
     );
   }
 
+  componentDidMount = () => {
+    this.props.getProductType();    
+  }
+
+  handelChange = (filterData) => {
+    this.setState({filterData})
+  }
+
   handleApplyClick = () => {
-    this.setState({ filterApply: true });
-    this.props.handleApplyClick(this.state.filData);
-  };
-
-  handleOnChange = filterData => {
-    this.setState({ filData: filterData });
-  };
-
-  handleSelect = filterData => {
-    this.setState({ filData: filterData });
-  };
+    const { filterData } = this.state;
+    if (filterData && filterData.suggestions.length !== 0 && filterData.suggestions[0].name )
+    {
+      this.props.handleApplyClick(filterData.suggestions[0].name);
+    }
+  }
 
 }
 
 DashboardFilter.propTypes = {
-  handleApplyClick: PropTypes.func.isRequired
+  handleApplyClick: PropTypes.func.isRequired,
+  getProductType: PropTypes.func.isRequired,
+  products: PropTypes.any,
 };
 
-export default DashboardFilter;
+const mapStateToProps = state => ({
+  products: state.productData.products
+});
+
+const mapDispatchToProps = {
+  getProductType
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardFilter);
