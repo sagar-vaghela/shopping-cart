@@ -48,6 +48,6 @@ storiesOf('items', module)
         ...itemnoDiscription
       })
     }
-    /></div > ;
+    /></div > 
   });
   
