@@ -30,10 +30,10 @@ class RootContainer extends Component {
         <Header cartData={cartData} />
         <div className="container-fluid main-container">
           <div className="row col-12">
-            <div className="col-12 col-md-3 col-xl-2 bd-sidebar">
+            <div className="col-12 col-md-4 col-xl-3 bd-sidebar">
               <LeftSideBar handleApplyClick={this.getFilter} />
             </div>
-            <main className="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content">
+            <main className="col-12 col-md-8 col-xl-9 py-md-3 pl-md-5 bd-content">
               <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart}/>
             </main>
           </div>
@@ -51,26 +51,7 @@ class RootContainer extends Component {
     let id = e.target.id; 
     const { cartData, items } = this.props;
     let itemData = items.filter(i => i.id !== parseInt(id));
-    let cart = items.filter(i => i.id === parseInt(id));
     let count = cartData.cartCount + 1;
-
-    // const indexOf = cartData.carts.findIndex(c => {
-    //   return c.id === id;
-    // });
-
-    // if (indexOf === -1) {
-    //   cartData.carts.push(cart);
-    // } else {
-    //   cartData.carts.splice(indexOf, 1);
-    //   cartData.carts.push(cart);
-    // }
-
-
-    // console.log(cartData.carts);
-    // console.log(cartData.carts.push(cart));
-    // console.log(cart);
-    
-    // let cartAddData = cartData.carts.push(cart);
     let paylod = { itemData , count }
     this.props.addToCart(paylod);
     this.props.getItems(itemData);
