@@ -4,7 +4,7 @@ import 'react-chromatic/storybook-addon';
 
 import '../src/styles/global/index.scss';
 
-const req = requireContext('../src/stories', true, /\.stories\.js$/);
+const req = requireContext('../src/stories', true);
 
 function loadStories() {
   req.keys().forEach(filename => req(filename));

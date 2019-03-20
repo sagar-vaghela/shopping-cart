@@ -1,19 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import { storiesOf } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
+import { Button, Badge } from "../ui-kit/common-ui-components";
 
-import { Button, Welcome } from '@storybook/react/demo';
+storiesOf("Welcome", module).add("to Storybook", () => <div>Shopping Cart</div>);
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf("Button", module)
+  .add("with text", () => <Button text="Hello Button" onClick={action("clicked")} />)
+  .add("disabled", () => <Button text="Hello Button" disabled="true" />);
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  ));
+storiesOf("Badge", module)
+  .add("with zero quantity", () => <Badge count="0" />)
+  .add("with more than 10", () => <Badge count="100" />)
+  .add("with more than 10", () => <Badge count="100" />);
