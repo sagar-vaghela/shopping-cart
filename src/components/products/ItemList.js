@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Select } from "../../ui-kit";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import { Select, Button } from "../../ui-kit";
+import { Link } from 'react-router-dom';
 import Item from "./Item";
+import * as routes from "../../lib/constants";
 
 class ItemList extends Component {
   constructor() {
@@ -59,7 +56,12 @@ class ItemList extends Component {
           {
             items.map(item => {
               return (
-                <Item key={item.id} item = {item} handleAddToCart = {this.props.handleAddToCart} />
+                <div>
+                  <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`} className="list-group-item list-group-item-action flex-column align-items-start">
+                    <Item  item = {item} handleAddToCart = {handleAddToCart} />
+                  </Link>
+                  <Button type="button" className="btn btn-info pull-right" text="Add to cart" id={item.id} onClick={handleAddToCart} />
+                </div>
               )
             })
           }
