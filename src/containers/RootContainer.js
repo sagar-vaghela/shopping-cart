@@ -30,10 +30,10 @@ class RootContainer extends Component {
         <Header cartData={cartData} />
         <div className="container-fluid main-container">
           <div className="row col-12">
-            <div className="col-12 col-md-3 col-xl-2 bd-sidebar">
+            <div className="col-12 col-md-4 col-xl-3 bd-sidebar">
               <LeftSideBar handleApplyClick={this.getFilter} />
             </div>
-            <main className="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content">
+            <main className="col-12 col-md-8 col-xl-9 py-md-3 pl-md-5 bd-content">
               <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart}/>
             </main>
           </div>

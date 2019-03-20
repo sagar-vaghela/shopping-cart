@@ -52,16 +52,20 @@ class ItemList extends Component {
             <Select options={sortOptions} className="form-control" id="productListSortBy" onChange={this.handleOnChange} />
           </div>
         }
-        <div className="list-group">
+                <div className="row">
           {
             items.map(item => {
               return (
-                <div key={item.id}>
-                  <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`} className="list-group-item list-group-item-action flex-column align-items-start">
-                    <Item item = {item} handleAddToCart = {handleAddToCart} />
-                  </Link>
-                  <Button type="button" className="btn btn-info pull-right" text="Add to cart" id={item.id} onClick={handleAddToCart} />
-                </div>
+                  <div className="col-sm-6" key={item.id}>
+                    <div className="card">
+                      <div className="card-body">
+                        <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`}>
+                          <Item item={item} />
+                        </Link>
+                        <Button type="button" className="btn btn-info pull-right" text="Add to cart" id={item.id} onClick={handleAddToCart} />
+                      </div>
+                    </div>
+                  </div>
               )
             })
           }

@@ -28,7 +28,7 @@ class DashboardRoutes extends Component {
           />
           <Route
             exact
-            path={routes.CART_ROUTE}
+            path={routes.CARTS_ROUTE}
             component={Cart}
           />
         </Switch>

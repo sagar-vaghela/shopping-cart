@@ -6,7 +6,7 @@ const initialState = {
       error: null
     },
     cartData: {
-      carts: null,
+      carts: [],
       cartCount: 0,
       isLoading: false,
       error: null
