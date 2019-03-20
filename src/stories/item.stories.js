@@ -3,44 +3,44 @@ import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
 import { Item } from "../components";
 import { specs, describe, it } from 'storybook-addon-specifications'
+import {mount} from "enzyme";
 import expect from "expect";
-import * as images from "../lib/constants";
 
-export const item =    {
+export const item = {
   id: 1,
-  name: 'Apple iPhone Xs Max',
-  image: `${images.appleIphoneXS}`,
-  description: 'Facial Recognition, Fingerprint Scanner',
-  brand: 'Apple',
+  name: "Apple iPhone Xs Max",
+  image: "appleIphoneXS.png",
+  description: "Facial Recognition, Fingerprint Scanner",
+  brand: "Apple",
   price: 99000,
-  type: 'Mobile',
+  type: "Mobile"
 };
 
-export const itemnoDiscription =     {
+export const itemnoDiscription = {
   id: 1,
-  name: 'Apple iPhone Xs Max',
-  image: `${images.appleIphoneXS}`,
-  description: 'Facial Recognition, Fingerprint Scanner',
-  brand: 'Apple',
-  price: 99000,
-  type: 'Mobile',
+  name: "Apple",
+  image: "appleIphoneXS.png",
+  description: "",
+  brand: "Apple",
+  price: 900,
+  type: "Mobile"
 };
 
-storiesOf("items", module)
+storiesOf("item", module)
   .addDecorator(withKnobs)
   .add("default", () => {
     const app =  (
       <div className="list-group">
         {" "}
         <Item
-          item={object("items", {
+          item={object("item", {
             ...item
           })}
         />
       </div>
     );
 
-    specs(() => describe('items', function () {
+    specs(() => describe('Item', function () {
       it('Should have the description', function () {
         expect("1").toContain('1');
       });
@@ -52,12 +52,12 @@ storiesOf("items", module)
     
     return app;
   })
-  .add("no Description", () => {
+  .add("No Description", () => {
     const app =(
       <div className="list-group">
         {" "}
         <Item
-          item={object("items", {
+          item={object("Item", {
             ...itemnoDiscription
           })}
         />
