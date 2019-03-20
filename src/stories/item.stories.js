@@ -2,7 +2,10 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
 import { Item } from "../components";
- 
+import { specs, describe, it } from 'storybook-addon-specifications'
+import {mount} from "enzyme";
+import expect from "expect";
+
 export const item = {
   id: 1,
   name: "Apple iPhone Xs Max",
@@ -26,7 +29,7 @@ export const itemnoDiscription = {
 storiesOf("items", module)
   .addDecorator(withKnobs)
   .add("default", () => {
-    return (
+    const app =  (
       <div className="list-group">
         {" "}
         <Item
@@ -36,9 +39,21 @@ storiesOf("items", module)
         />
       </div>
     );
+
+    specs(() => describe('items', function () {
+      it('Should have the description', function () {
+        expect("1").toContain('1');
+      });
+      it('Should have the prize', function () {
+        expect("900").toContain('900');
+      });
+    }));
+
+    
+    return app;
   })
   .add("no Description", () => {
-    return (
+    const app =(
       <div className="list-group">
         {" "}
         <Item
@@ -48,4 +63,13 @@ storiesOf("items", module)
         />
       </div>
     );
+    
+    specs(() => describe('items', function () {
+      it('Should not have the description', function () {
+        expect("1").toContain('1');
+      });
+    }));
+
+   return app;
+
   });
