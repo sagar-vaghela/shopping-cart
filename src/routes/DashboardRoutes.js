@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import * as routes from "../lib/constants";
 
-import { ItemList, Item, Cart } from "../components";
+import { ItemList, Cart, Product } from "../components";
 
 class DashboardRoutes extends Component {
   render() {
@@ -24,7 +24,7 @@ class DashboardRoutes extends Component {
           <Route
             exact
             path={routes.ITEM_ROUTE}
-            component={Item}
+            component={Product}
           />
           <Route
             exact
