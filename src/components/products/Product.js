@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Button } from "../../ui-kit";
+import { getItemDetail } from "../../actions";
 
 class Product extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {
-    const itemDetails = {
-      id: 1,
-      name: 'Apple iPhone Xs Max',
-      image: 'appleIphoneXS.png',
-      description: 'Facial Recognition, Fingerprint Scanner',
-      brand: 'Apple',
-      price: 99000,
-      type: 'Mobile',
-    }
+
+    const { item, handleAddToCart } = this.props;
+
+    console.log(item);
 
     return (
       <div className="container">
@@ -28,24 +25,47 @@ class Product extends Component {
                   <div className="tab-pane active" id="pic-1"><img src="https://5.imimg.com/data5/EF/RQ/MY-3030942/lenovo-desktop-computer-500x500.jpg" /></div>
                 </div>
               </div>
-              <div className="product-details col-md-6">
-                <h3 className="product-title">{itemDetails.name}</h3>
-                <p className="product-description">{itemDetails.description}</p>
-                <h4 className="price">current price: <span>{itemDetails.price} <i className="fa fa-inr"></i></span></h4>
-                <div className="action">
-                  <Button type="button" className="btn btn-info" text="Add to cart" />
+              {item && 
+                <div className="product-details col-md-6">
+                  <h3 className="product-title">{item.name}</h3>
+                  <p className="product-description">{item.description}</p>
+                  <h4 className="price">current price: <span>{item.price} <i className="fa fa-inr"></i></span></h4>
+                  <div className="action">
+                    <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} handleAddToCart={handleAddToCart} />
+                  </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
         </div>
       </div>
     );
   }
+
+  componentDidMount = () => {
+    const { match } = this.props;
+    if(match && match.params && match.params.id) {
+      this.props.getItemDetail(match.params.id);
+    }
+  }
 }
 
 Product.propTypes = {
-  item: PropTypes.any
+  item: PropTypes.any,
+  handleAddToCart: PropTypes.func.isRequired,
+  getItemDetail: PropTypes.func.isRequired
 };
 
-export default Product;
+
+const mapStateToProps = state => ({
+  item: state.itemData.item,
+});
+
+const mapDispatchToProps = {
+  getItemDetail
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Product);

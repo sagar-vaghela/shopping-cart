@@ -40,6 +40,11 @@ class DashboardRoutes extends Component {
     const { items, handleAddToCart } = this.props;
     return <ItemList items={items} handleAddToCart={handleAddToCart} />
   }
+
+  handleProduct = () => {
+    const { handleAddToCart } = this.props;
+    return <Product handleAddToCart={handleAddToCart} />
+  }
 }
 
 DashboardRoutes.propTypes = {

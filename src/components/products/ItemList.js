@@ -56,9 +56,9 @@ class ItemList extends Component {
           {
             items.map(item => {
               return (
-                <div>
+                <div key={item.id}>
                   <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`} className="list-group-item list-group-item-action flex-column align-items-start">
-                    <Item  item = {item} handleAddToCart = {handleAddToCart} />
+                    <Item item = {item} handleAddToCart = {handleAddToCart} />
                   </Link>
                   <Button type="button" className="btn btn-info pull-right" text="Add to cart" id={item.id} onClick={handleAddToCart} />
                 </div>

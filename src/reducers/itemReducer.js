@@ -21,6 +21,27 @@ const itemReducer = (state = initialState.itemData, action) => {
         isLoading: false,
         error: action.payload
       };
+
+    // Get Item Details
+    case types.GET_ITEM_DETAIL_STARTED:
+      return {
+        ...state,
+        isLoading: true,
+        error: null
+      };
+    case types.GET_ITEM_DETAIL_SUCCEEDED:
+      return {
+        ...state,
+        item: action.payload,
+        isLoading: false
+      };
+    case types.GET_ITEM_DETAIL_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+      
     default:
       return state;
   }

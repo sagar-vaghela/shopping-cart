@@ -30,3 +30,34 @@ export const getItems = (payload) => {
     dispatch(getItemsFailed("error.response"));
   };
 };
+
+
+// Get Item Detail
+const getItemDetailStarted = () => ({
+  type: types.GET_ITEM_DETAIL_STARTED
+});
+
+const getItemDetailSucceeded = data => ({
+  type: types.GET_ITEM_DETAIL_SUCCEEDED,
+  payload: data
+});
+
+const getItemDetailFailed = error => ({
+  type: types.GET_ITEM_DETAIL_FAILED,
+  payload: error,
+  error: true
+});
+
+export const getItemDetail = (id) => {
+  return dispatch => {
+    // Used for Start Fetching Data
+    dispatch(getItemDetailStarted());
+    
+    let productDetails = products[products.findIndex(p => p.id === parseInt(id))];
+    // Used when get Success Response)
+    dispatch(getItemDetailSucceeded(productDetails));
+
+    // Used when get error 
+    dispatch(getItemDetailFailed("error.response"));
+  };
+};
