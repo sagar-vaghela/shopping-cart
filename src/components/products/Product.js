@@ -5,16 +5,8 @@ import { Button } from "../../ui-kit";
 import { getItemDetail } from "../../actions";
 
 class Product extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-
     const { item, handleAddToCart } = this.props;
-
-    console.log(item);
-
     return (
       <div className="container">
         <div className="card">

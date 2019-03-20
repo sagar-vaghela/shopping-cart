@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 import { Badge } from "../../ui-kit/common-ui-components";
+import * as routes from "../../lib/constants";
 
 class Header extends Component {
   render() {
@@ -16,7 +17,7 @@ class Header extends Component {
           <div className="collapse navbar-collapse justify-content-end" id="navbarToggler">
             <ul className="navbar-nav">
               <li className="nav-item">
-              <Link to={"/cart"}> <span className="nav-link active"> <Badge count={cartData.cartCount} /> </span> </Link>
+              <Link to={routes.CARTS_ROUTE}> <span className="nav-link active"> <Badge count={cartData.cartCount} /> </span> </Link>
               </li>
             </ul>
           </div> 

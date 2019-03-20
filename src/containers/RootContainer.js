@@ -51,7 +51,26 @@ class RootContainer extends Component {
     let id = e.target.id; 
     const { cartData, items } = this.props;
     let itemData = items.filter(i => i.id !== parseInt(id));
+    let cart = items.filter(i => i.id === parseInt(id));
     let count = cartData.cartCount + 1;
+
+    // const indexOf = cartData.carts.findIndex(c => {
+    //   return c.id === id;
+    // });
+
+    // if (indexOf === -1) {
+    //   cartData.carts.push(cart);
+    // } else {
+    //   cartData.carts.splice(indexOf, 1);
+    //   cartData.carts.push(cart);
+    // }
+
+
+    // console.log(cartData.carts);
+    // console.log(cartData.carts.push(cart));
+    // console.log(cart);
+    
+    // let cartAddData = cartData.carts.push(cart);
     let paylod = { itemData , count }
     this.props.addToCart(paylod);
     this.props.getItems(itemData);
