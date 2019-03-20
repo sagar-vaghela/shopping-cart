@@ -31,7 +31,7 @@ class LeftSidebarFilter extends Component {
     return (
       <div>
         <AutosuggestElement suggestionValues={products} placeholder="Select Product" onChange={this.handelChange} />
-        <button type="button" class="btn btn-info"><i class="fa fa-search"></i></button>
+        <button type="button" className="btn btn-info"><i className="fa fa-search"></i></button>
         {/* {filters.map(filter => {
           return (
             <div className="filter-wrapper" key={filter.name}>

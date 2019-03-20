@@ -15,18 +15,12 @@ class AutosuggestElement extends Component {
         this.setState({
             value: newValue
         });
-        const { data } = this.state;
-        data.values = { name: this.state.name, val: event.target.value };
-        this.props.onChange(data);
+        this.props.onChange(this.state);
     };
 
     getSuggestions = value => {
         const inputValue = value.trim().toLowerCase();
         const inputLength = inputValue.length;
-
-        console.log(this.props.suggestionValues);
-        
-
         return inputLength === 0 ? [] : this.props.suggestionValues.filter(lang =>
             lang.name.toLowerCase().slice(0, inputLength) === inputValue
         );
@@ -60,11 +54,6 @@ class AutosuggestElement extends Component {
             value,
             onChange: this.onChange
         };
-
-        console.log(suggestions);
-        console.log(this.props.suggestionValues);
-        
-        
         return (
             <Autosuggest
                 suggestions={suggestions}

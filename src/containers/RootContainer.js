@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { 
   getItems, 
   addToCart,
-  remvoeToCart 
+  removeToCart 
 } from "../actions";
 
 import {
@@ -54,14 +54,12 @@ class RootContainer extends Component {
     
     let itemData = items.filter(i => i.id !== parseInt(id));
 
-    console.log(itemData);
-    
-
     let count = cartData.cartCount + 1;
 
     let paylod = { itemData , count }
 
     this.props.addToCart(paylod);
+    this.props.getItems(itemData);
   }
 
   getFilter = (filterData) => {
@@ -72,8 +70,8 @@ class RootContainer extends Component {
 RootContainer.propTypes = {
   getItems: PropTypes.func.isRequired,
   addToCart: PropTypes.func.isRequired,
-  cartData: PropTypes.any,
   removeToCart: PropTypes.func.isRequired,
+  cartData: PropTypes.any,
   items: PropTypes.any
 };
 
@@ -85,7 +83,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   getItems,
   addToCart,
-  remvoeToCart
+  removeToCart
 };
 
 export default connect(

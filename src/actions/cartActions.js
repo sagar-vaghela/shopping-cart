@@ -1,5 +1,4 @@
 import * as types from "../lib/constants";
-import { products, productType } from "../mock";
 
 // AddToCart
 const addToCartStarted = () => ({
@@ -27,8 +26,6 @@ export const addToCart = (payload) => {
     // Used when get Success Response
     dispatch(addToCartSucceeded(payload));
 
-    dispatch(getItemsSucceeded(payload.itemData));
-
     // Used when get error 
     dispatch(addToCartFailed("error.response"));
   };
@@ -51,7 +48,7 @@ const removeToCartFailed = error => ({
   error: true
 });
 
-export const remvoeToCart = (paylod) => {
+export const removeToCart = (paylod) => {
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(removeToCartStarted());
@@ -64,8 +61,3 @@ export const remvoeToCart = (paylod) => {
     dispatch(removeToCartFailed("error.response"));
   };
 };
-
-const getItemsSucceeded = data => ({
-  type: types.GET_ITEMS_SUCCEEDED,
-  payload: data
-});
