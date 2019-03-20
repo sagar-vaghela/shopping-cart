@@ -45,28 +45,27 @@ class ItemList extends Component {
     const { sortOptions } = this.state;
 
     return (
-      <div>
+      <div className="testClass">
         {
           <div className="form-group" id="productListSort">
             <label>Sort By</label>
             <Select options={sortOptions} className="form-control" id="productListSortBy" onChange={this.handleOnChange} />
           </div>
         }
-                <div className="row">
+        <div className="row">
           {
             items.map(item => {
               return (
-                  <div className="col-sm-6" key={item.id}>
-                    <div className="card">
-                      <div className="card-body">
-                        <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`}>
-                          <Item item={item} />
-                        </Link>
-                        <Button type="button" className="btn btn-info pull-right" text="Add to cart" id={item.id} onClick={handleAddToCart} />
-                      </div>
-                    </div>
-                  </div>
-              )
+                <div className="col-sm-3" key={item.id}>
+                <div className="card">
+                <div className="card-body">
+                <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`}>
+                  <Item item={item} />
+                </Link>
+                <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} onClick={handleAddToCart} />
+                </div>
+                </div>
+                </div>               )
             })
           }
         </div>

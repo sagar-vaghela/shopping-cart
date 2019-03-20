@@ -15,6 +15,8 @@ import {
 
 import { Header, Footer } from "../components";
 
+import { products } from "../mock";
+
 class RootContainer extends Component {
   constructor(props, context) {
     super(props, context);
@@ -59,8 +61,7 @@ class RootContainer extends Component {
 
   getFilter = (filterData) => {
     //list of array data as object & calling API.
-    const { items } = this.props;
-    let itemData = items.filter(i => i.type === filterData);
+    let itemData = products.filter(i => i.type === filterData);
     this.props.getItems(itemData);
   }
 }

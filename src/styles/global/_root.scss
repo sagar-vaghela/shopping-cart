@@ -32,7 +32,7 @@ footer {
   position: relative;
 }
 .react-autosuggest__input {
-  width: 83%;
+  width: calc(100% - 55px);
   height: 39px;
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
@@ -56,7 +56,7 @@ footer {
 .react-autosuggest__suggestions-container--open {
   display: block;
   position: absolute;
-  width: 83%;
+  width: calc(100% - 55px);
   border: 1px solid #aaa;
   border-top: none;
   background-color: #fff;
@@ -120,5 +120,22 @@ a:hover{
 }
 
 .bd-content .card{
-  margin-bottom: 10px;
+  text-align: center;
+  height: 350px;
+  border: 0px !important;
+}
+.bd-content .card h5 {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  padding: 20px;
+  font-size: 1.3rem;
+  margin: 0;
+  background: white;
+  resize: horizontal;
+}
+.bd-sidebar button{
+  width: 50px;
 }
