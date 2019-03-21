@@ -9,8 +9,7 @@ import {
 } from "../actions";
 
 import {
-  DashboardRoutes,
-  LeftSideBar
+  DashboardRoutes
 } from "../routes";
 
 import { Header, Footer } from "../components";
