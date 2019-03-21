@@ -11,7 +11,7 @@ class Header extends Component {
     return (
       <header>
         <nav className="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
-          <span className="navbar-brand"><Link to={"/"}> Shopping Cart</Link></span>
+          <span className="navbar-brand"><Link to={"/"}> Acme.com</Link></span>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
