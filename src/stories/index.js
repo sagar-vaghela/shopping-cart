@@ -14,5 +14,5 @@ storiesOf("Button", module)
 
 storiesOf("Badge", module)
   .addDecorator(withKnobs)
-  .add("with zero quantity", () => <Badge count={object("Card Items",0)} />)
-  .add("with more than 10", () => <Badge count={object("Card Items",11)} s={object("Size (min/max)",`min`)} />)
+  .add("with zero quantity", () => <Badge count={object("Card Items",0)} s={object("Size (large, medium, small)",`min`)} />)
+  .add("with more than 10", () => <Badge count={object("Card Items",11)} s={object("Size (large, medium, small)",`min`)} />)

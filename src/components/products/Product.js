@@ -44,7 +44,7 @@ class Product extends Component {
 
 Product.propTypes = {
   item: PropTypes.any,
-  handleAddToCart: PropTypes.func.isRequired,
+  handleAddToCart: PropTypes.func,
   getItemDetail: PropTypes.func.isRequired
 };
 
