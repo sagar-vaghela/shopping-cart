@@ -2,7 +2,6 @@ import React from "react";
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { linkTo } from "@storybook/addon-links";
 import { Button, Badge } from "../ui-kit/common-ui-components";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
 
@@ -16,5 +15,4 @@ storiesOf("Button", module)
 storiesOf("Badge", module)
   .addDecorator(withKnobs)
   .add("with zero quantity", () => <Badge count={object("Card Items",0)} />)
-  .add("with more than 10", () => <Badge count={object("Card Items",11)} />)
-  .add("with more than 20", () => <Badge count={object("Card Items",25)} />);
+  .add("with more than 10", () => <Badge count={object("Card Items",11)} s={object("Size (min/max)",`min`)} />)

@@ -35,7 +35,7 @@
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "yarn build-css && start-storybook -p 9000 -s public",
+    "storybook": "start-storybook -p 9000 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {

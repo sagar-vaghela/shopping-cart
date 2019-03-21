@@ -81,9 +81,9 @@ footer {
   background-color: #ddd;
 }
 
-.p1[data-count]:after{
+.min[data-count]:after{
   position: absolute;
-  right: 1%;
+  left: 1%;
   top: 2px;
   content: attr(data-count);
   font-size: 10px;
@@ -96,6 +96,23 @@ footer {
   min-width: 15px;
   min-height: 15px;
 }
+
+.max[data-count]:after{
+  position: absolute;
+  left: 2%;
+  top: 2px;
+  content: attr(data-count);
+  font-size: 15px;
+  /* padding: .2em; */
+  border-radius: 50%;
+  line-height: 25px;
+  color: white;
+  background: rgba(255, 0, 0, 0.85);
+  text-align: center;
+  min-width: 30px;
+  min-height: 30px;
+}
+
 .fa-stack{
   font-size: inherit !important;
   height: 20px !important;
