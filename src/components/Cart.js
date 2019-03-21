@@ -62,7 +62,7 @@ class Cart extends React.Component {
                                         </div>
                                         <div className="col-6">
                                             <p className="product-description">{product.description}</p>
-                                            <h4 className="price">current price: <span>{product.price} <i className="fa fa-inr"></i></span></h4>
+                                            <h4 className="price">current price: <span> <i className="fa fa-usd"></i> {product.price} </span></h4>
                                             <div className="action">
                                                 <Button type="button" className="btn btn-info" text={<i className='fa fa-trash'></i>} />
                                             </div>

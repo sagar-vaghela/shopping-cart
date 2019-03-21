@@ -11,12 +11,12 @@ const ItemListStory = ( { items } ) => {
           items && items.map(item => {
             return (
               <div className="col-sm-3" key={item.id}>
-              <div className="card">
-              <div className="card-body">
-                <Item item={item} />
-              <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} />
-              </div>
-              </div>
+                <div className="card">
+                  <div className="card-body">
+                    <Item item={item} />
+                    <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} />
+                  </div>
+                </div>
               </div>)
           })
         }

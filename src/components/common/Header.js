@@ -6,7 +6,7 @@ import * as routes from "../../lib/constants";
 
 class Header extends Component {
   render() {
-    const { cartData } = this.props;
+    const { cartData, handleApplyClick } = this.props;
     return (
       <header>
         <nav className="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
@@ -14,6 +14,7 @@ class Header extends Component {
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
+          {/* <DashboardFilter handleApplyClick={handleApplyClick} /> */}
           <div className="collapse navbar-collapse justify-content-end" id="navbarToggler">
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -28,7 +29,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  cartData: PropTypes.any
+  cartData: PropTypes.any,
+  handleApplyClick: PropTypes.func.isRequired
 };
 
 export default Header;

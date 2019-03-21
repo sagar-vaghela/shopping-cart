@@ -29,13 +29,11 @@ class RootContainer extends Component {
     const { items, cartData } = this.props;
     return (
       <div>
-        <Header cartData={cartData} />
+        <Header cartData={cartData} handleApplyClick={this.getFilter} />
         <div className="container-fluid main-container">
           <div className="row col-12">
-            <div className="col-12 col-md-4 col-xl-3 bd-sidebar">
-              <LeftSideBar handleApplyClick={this.getFilter} />
-            </div>
-            <main className="col-12 col-md-8 col-xl-9 py-md-3 pl-md-5 bd-content">
+              {/* <LeftSideBar  handleApplyClick={this.getFilter} /> */}
+            <main className="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
               <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart}/>
             </main>
           </div>
