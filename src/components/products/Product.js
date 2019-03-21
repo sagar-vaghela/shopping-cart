@@ -20,11 +20,13 @@ class Product extends Component {
               {item && 
                 <div className="product-details col-md-6">
                   <h3 className="product-title">{item.name}</h3>
+                  <h3 className="product-title">{item.brand}</h3>
                   <p className="product-description">{item.description}</p>
                   <h4 className="price">current price: <i className="fa fa-usd"></i> <span>{item.price} </span></h4>
                   <div className="action">
                     <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} handleAddToCart={handleAddToCart} />
                   </div>
+                  <h3 className="product-title">{item.type}</h3>
                 </div>
               }
             </div>

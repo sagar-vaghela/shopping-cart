@@ -1,11 +1,12 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
-import { Item, ItemListStory } from "../components";
+import { Item, ItemListStory, Product } from "../components";
 import { specs, describe, it } from 'storybook-addon-specifications'
 import expect from "expect";
 import * as images from "../lib/constants";
 import { products } from "../mock";
+import ProductStory from "../components/products/ProductStory";
 
 export const item = {
   id: 1,
@@ -31,14 +32,11 @@ storiesOf("item", module)
   .addDecorator(withKnobs)
   .add("default", () => {
     const app =  (
-      <div className="list-group">
-        {" "}
-        <Item
+        <ProductStory
           item={object("item", {
             ...item
           })}
         />
-      </div>
     );
 
     specs(() => describe('Item', function () {
@@ -53,14 +51,11 @@ storiesOf("item", module)
   })
   .add("No Description", () => {
     const app =(
-      <div className="list-group">
-        {" "}
-        <Item
+        <ProductStory
           item={object("Item", {
             ...itemnoDiscription
           })}
         />
-      </div>
     );
     
     specs(() => describe('items', function () {
