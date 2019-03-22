@@ -1,0 +1,7 @@
+{
+    "extends": "./packages/eslint-config-react-to-do-list/configurations/react.js",
+    "root": true,
+    "rules": {
+        "camelcase": "off"
+    }
+}
