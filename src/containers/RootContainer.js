@@ -30,14 +30,18 @@ class RootContainer extends Component {
     return (
       <div>
         <Header cartData={cartData} handleApplyClick={this.getFilter} />
-        <div className="container-fluid main-container">
-          <div className="row col-12">
-              {/* <LeftSideBar  handleApplyClick={this.getFilter} /> */}
-            <main className="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
-              <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart} carts={cartData.carts} handleRemoveToCart={this.handleRemoveToCart} />
-            </main>
+          <div className="container-fluid main-container">
+            <div className="row col-12">
+              <main className="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
+                <DashboardRoutes 
+                  items={items} 
+                  carts={cartData.carts} 
+                  handleAddToCart={this.handleAddToCart} 
+                  handleRemoveToCart={this.handleRemoveToCart} 
+                />
+              </main>
+            </div>
           </div>
-        </div>
         <Footer />
       </div>
     );

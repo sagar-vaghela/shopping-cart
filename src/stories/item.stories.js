@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
-import { Item, ItemListStory, Product } from "../components";
+import { ItemListStory } from "../components";
 import { specs, describe, it } from 'storybook-addon-specifications'
 import expect from "expect";
 import * as images from "../lib/constants";
