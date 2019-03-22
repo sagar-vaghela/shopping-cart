@@ -17,20 +17,19 @@ const getItemsFailed = error => ({
   error: true
 });
 
-export const getItems = (payload) => {
-  let productsData = payload? payload : products;
+export const getItems = payload => {
+  let productsData = payload ? payload : products;
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(getItemsStarted());
-    
+
     // Used when get Success Response
     dispatch(getItemsSucceeded(productsData));
 
-    // Used when get error 
+    // Used when get error
     dispatch(getItemsFailed("error.response"));
   };
 };
-
 
 // Get Item Detail
 const getItemDetailStarted = () => ({
@@ -48,16 +47,17 @@ const getItemDetailFailed = error => ({
   error: true
 });
 
-export const getItemDetail = (id) => {
+export const getItemDetail = id => {
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(getItemDetailStarted());
-    
-    let productDetails = products[products.findIndex(p => p.id === parseInt(id))];
+
+    let productDetails =
+      products[products.findIndex(p => p.id === parseInt(id))];
     // Used when get Success Response)
     dispatch(getItemDetailSucceeded(productDetails));
 
-    // Used when get error 
+    // Used when get error
     dispatch(getItemDetailFailed("error.response"));
   };
 };

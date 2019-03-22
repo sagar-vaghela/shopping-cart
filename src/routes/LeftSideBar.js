@@ -8,8 +8,16 @@ class LeftSideBar extends Component {
   render() {
     return (
       <div>
-        <Route path={routes.ROOT_ROUTE} exact component={this.handleDashboardFilter} />
-        <Route path={routes.ITEMS_ROUTE} exact component={this.handleDashboardFilter} />
+        <Route
+          path={routes.ROOT_ROUTE}
+          exact
+          component={this.handleDashboardFilter}
+        />
+        <Route
+          path={routes.ITEMS_ROUTE}
+          exact
+          component={this.handleDashboardFilter}
+        />
         {/* <Route path={routes.ITEM_ROUTE} exact component={this.handleDashboardFilter} /> */}
       </div>
     );
@@ -18,7 +26,7 @@ class LeftSideBar extends Component {
   handleDashboardFilter = () => {
     const { handleApplyClick } = this.props;
     return <DashboardFilter handleApplyClick={handleApplyClick} />;
-  }
+  };
 }
 
 LeftSideBar.propTypes = {

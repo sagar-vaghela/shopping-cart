@@ -7,9 +7,9 @@ import { unregister } from "./serviceWorker";
 import { configureStore } from "./store";
 import "../src/styles/global/index.scss";
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.js';
-import 'font-awesome/css/font-awesome.min.css';
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
+import "font-awesome/css/font-awesome.min.css";
 
 // Unregister the service worker from create-react-app
 unregister();

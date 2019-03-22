@@ -4,9 +4,9 @@ import cartData from "./cartReducer";
 import productData from "./productReducer";
 
 const rootReducer = combineReducers({
-    itemData,
-    cartData,
-    productData
+  itemData,
+  cartData,
+  productData
 });
 
 export default rootReducer;

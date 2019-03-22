@@ -16,19 +16,18 @@ const addToCartFailed = error => ({
   error: true
 });
 
-export const addToCart = (payload) => {
+export const addToCart = payload => {
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(addToCartStarted());
-    
+
     // Used when get Success Response
     dispatch(addToCartSucceeded(payload));
 
-    // Used when get error 
+    // Used when get error
     dispatch(addToCartFailed("error.response"));
   };
 };
-
 
 // RemoveToCart
 const removeToCartStarted = () => ({
@@ -46,16 +45,15 @@ const removeToCartFailed = error => ({
   error: true
 });
 
-export const removeToCart = (paylod) => {
+export const removeToCart = paylod => {
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(removeToCartStarted());
-    
-    
+
     // Used when get Success Response
     dispatch(removeToCartSucceeded(paylod));
 
-    // Used when get error 
+    // Used when get error
     dispatch(removeToCartFailed("error.response"));
   };
 };
