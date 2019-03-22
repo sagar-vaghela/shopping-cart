@@ -9,7 +9,7 @@ const ProductStory = ({ item }) => {
             <div className="wrapper row">
               <div className="preview col-md-6">
                 <div className="product-preview-pic tab-content">
-                  <div className="tab-pane active" id="pic-1"><img src="https://5.imimg.com/data5/EF/RQ/MY-3030942/lenovo-desktop-computer-500x500.jpg" /></div>
+                  {item && <div className="tab-pane active" id="pic-1"><img src={item.image} alt={item.id} /></div>}
                 </div>
               </div>
               {item && 

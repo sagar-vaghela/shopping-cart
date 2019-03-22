@@ -3,26 +3,6 @@ import initialState from "./initialState";
 
 const cartReducer = (state = initialState.cartData, action) => {
   switch (action.type) {
-    // Get Carts
-    case types.GET_CARTS_STARTED:
-      return {
-        ...state,
-        isLoading: true,
-        error: null
-      };
-    case types.GET_CARTS_SUCCEEDED:
-      return {
-        ...state,
-        carts: action.payload,
-        isLoading: false
-      };
-    case types.GET_CARTS_FAILED:
-      return {
-        ...state,
-        isLoading: false,
-        error: action.payload
-      };
-
     // Get Add Cart 
     case types.ADD_TO_CART_ITEM_STARTED:
       return {
@@ -33,7 +13,7 @@ const cartReducer = (state = initialState.cartData, action) => {
     case types.ADD_TO_CART_ITEM_SUCCEEDED:
       return {
         ...state,
-        carts: action.payload.data,
+        carts: action.payload.carts,
         cartCount: action.payload.count,
         isLoading: false
       };

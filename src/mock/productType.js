@@ -16,21 +16,21 @@ export const productType =	[
         name: 'Laptop'
     },
     {
-        id: 3,
+        id: 5,
         name: 'Desktop'
     },
     {
-        id: 3,
+        id: 6,
         name: 'Watch'
     },
     {
-        id: 3,
+        id: 7,
         name: 'Headphone'
     },
     {
-        id: 3,
+        id: 8,
         name: 'Earphone'
-    },
+    }
 ];
 
 export default productType;

@@ -20,7 +20,8 @@ class RootContainer extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      items: null
+      carts: props.cartData.carts,
+      items: props.items
     };
   }
 
@@ -33,7 +34,7 @@ class RootContainer extends Component {
           <div className="row col-12">
               {/* <LeftSideBar  handleApplyClick={this.getFilter} /> */}
             <main className="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
-              <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart}/>
+              <DashboardRoutes items={items} handleAddToCart={this.handleAddToCart} carts={cartData.carts} handleRemoveToCart={this.handleRemoveToCart} />
             </main>
           </div>
         </div>
@@ -48,12 +49,53 @@ class RootContainer extends Component {
 
   handleAddToCart = (e) => {
     let id = e.target.id; 
-    const { cartData, items } = this.props;
+    const { items, cartData } = this.props;
     let itemData = items.filter(i => i.id !== parseInt(id));
-    let count = cartData.cartCount + 1;
-    let paylod = { itemData , count }
-    this.props.addToCart(paylod);
     this.props.getItems(itemData);
+
+    const { carts } = this.state;
+    let cartItem = items.filter(i => i.id === parseInt(id));
+    const indexOf = carts.findIndex(c => {
+      return c.id === parseInt(id);
+    });
+    if (indexOf === -1) {
+      carts.push(cartItem[0]);
+    } else {
+      carts.splice(indexOf, 1);
+      carts.push(cartItem[0]);
+    }
+    let count = cartData.cartCount + 1;
+    let paylod = { carts , count }
+    this.props.addToCart(paylod);
+  }
+
+  handleRemoveToCart = (e) => {
+    let id = e.target.id; 
+    const { items, cartData } = this.props;
+    const { carts } = this.state;
+    const indexOf = carts.findIndex(c => {
+      return c.id === parseInt(id);
+    });
+    
+    if (indexOf !== -1) {
+      carts.splice(indexOf, 1);
+      let count = cartData.cartCount - 1;
+      let paylod = { carts , count }
+      this.props.removeToCart(paylod);
+    }
+
+    let productItem = products.filter(i => i.id === parseInt(id));
+    const indexOfItem = items.findIndex(c => {
+      return c.id === parseInt(id);
+    });
+
+    if (indexOfItem === -1) {
+      items.unshift(productItem[0]);
+    } else {
+      items.splice(indexOfItem, 1);
+      items.unshift(productItem[0]);
+    }
+    this.props.getItems(items);
   }
 
   getFilter = (filterData) => {

@@ -57,15 +57,16 @@ class ItemList extends Component {
             items.map(item => {
               return (
                 <div className="col-sm-3" key={item.id}>
-                <div className="card">
-                <div className="card-body">
-                <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`}>
-                  <Item item={item} />
-                </Link>
-                <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} onClick={handleAddToCart} />
-                </div>
-                </div>
-                </div>               )
+                  <div className="card">
+                    <div className="card-body">
+                      <Link to={`${routes.BASE_ITEM_ROUTE}${item.id}`}>
+                        <Item item={item} />
+                      </Link>
+                      <Button type="button" className="btn btn-info" text="Add to cart" id={item.id} onClick={handleAddToCart} />
+                      </div>
+                  </div>
+                </div>               
+              )
             })
           }
         </div>

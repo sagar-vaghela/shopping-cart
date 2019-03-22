@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import * as routes from "../lib/constants";
 
-import { ItemList, Cart, Product } from "../components";
+import { ItemList, CartList, Product } from "../components";
 
 class DashboardRoutes extends Component {
   render() {
@@ -29,7 +29,7 @@ class DashboardRoutes extends Component {
           <Route
             exact
             path={routes.CARTS_ROUTE}
-            component={Cart}
+            component={this.handleCartList}
           />
         </Switch>
       </div>
@@ -45,11 +45,17 @@ class DashboardRoutes extends Component {
     const { handleAddToCart } = this.props;
     return <Product handleAddToCart={handleAddToCart} />
   }
+
+  handleCartList = () => {
+    const { carts, handleRemoveToCart } = this.props;
+    return <CartList handleRemoveToCart={handleRemoveToCart} carts={carts} />
+  }
 }
 
 DashboardRoutes.propTypes = {
   items: PropTypes.any,
-  handleAddToCart: PropTypes.func.isRequired
+  handleAddToCart: PropTypes.func.isRequired,
+  carts: PropTypes.array
 };
 
 export default DashboardRoutes;

@@ -17,8 +17,6 @@ const addToCartFailed = error => ({
 });
 
 export const addToCart = (payload) => {
-  console.log(payload);
-
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(addToCartStarted());
