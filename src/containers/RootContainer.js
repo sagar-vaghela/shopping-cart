@@ -2,15 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { 
-  getItems, 
-  addToCart,
-  removeToCart 
-} from "../actions";
+import { getItems, addToCart, removeToCart } from "../actions";
 
-import {
-  DashboardRoutes
-} from "../routes";
+import { DashboardRoutes } from "../routes";
 
 import { Header, Footer } from "../components";
 
@@ -20,8 +14,7 @@ class RootContainer extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      carts: props.cartData.carts,
-      items: props.items
+      carts: props.cartData.carts
     };
   }
 
@@ -30,18 +23,18 @@ class RootContainer extends Component {
     return (
       <div>
         <Header cartData={cartData} handleApplyClick={this.getFilter} />
-          <div className="container-fluid main-container">
-            <div className="row col-12">
-              <main className="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
-                <DashboardRoutes 
-                  items={items} 
-                  carts={cartData.carts} 
-                  handleAddToCart={this.handleAddToCart} 
-                  handleRemoveToCart={this.handleRemoveToCart} 
-                />
-              </main>
-            </div>
+        <div className="container-fluid main-container">
+          <div className="row col-12">
+            <main className="col-12 col-md-12 col-xl-12 py-md-3 pl-md-5 bd-content">
+              <DashboardRoutes
+                items={items}
+                carts={cartData.carts}
+                handleAddToCart={this.handleAddToCart}
+                handleRemoveToCart={this.handleRemoveToCart}
+              />
+            </main>
           </div>
+        </div>
         <Footer />
       </div>
     );
@@ -49,16 +42,16 @@ class RootContainer extends Component {
 
   componentDidMount = () => {
     this.props.getItems();
-  }
+  };
 
-  handleAddToCart = (e) => {
-    let id = e.target.id; 
+  handleAddToCart = e => {
+    const id = e.target.id;
     const { items, cartData } = this.props;
-    let itemData = items.filter(i => i.id !== parseInt(id));
+    const itemData = items.filter(i => i.id !== parseInt(id));
     this.props.getItems(itemData);
 
     const { carts } = this.state;
-    let cartItem = items.filter(i => i.id === parseInt(id));
+    const cartItem = items.filter(i => i.id === parseInt(id));
     const indexOf = carts.findIndex(c => {
       return c.id === parseInt(id);
     });
@@ -68,27 +61,27 @@ class RootContainer extends Component {
       carts.splice(indexOf, 1);
       carts.push(cartItem[0]);
     }
-    let count = cartData.cartCount + 1;
-    let paylod = { carts , count }
+    const count = cartData.cartCount + 1;
+    const paylod = { carts, count };
     this.props.addToCart(paylod);
-  }
+  };
 
-  handleRemoveToCart = (e) => {
-    let id = e.target.id; 
+  handleRemoveToCart = e => {
+    const id = e.target.id;
     const { items, cartData } = this.props;
     const { carts } = this.state;
     const indexOf = carts.findIndex(c => {
       return c.id === parseInt(id);
     });
-    
+
     if (indexOf !== -1) {
       carts.splice(indexOf, 1);
-      let count = cartData.cartCount - 1;
-      let paylod = { carts , count }
+      const count = cartData.cartCount - 1;
+      const paylod = { carts, count };
       this.props.removeToCart(paylod);
     }
 
-    let productItem = products.filter(i => i.id === parseInt(id));
+    const productItem = products.filter(i => i.id === parseInt(id));
     const indexOfItem = items.findIndex(c => {
       return c.id === parseInt(id);
     });
@@ -100,13 +93,13 @@ class RootContainer extends Component {
       items.unshift(productItem[0]);
     }
     this.props.getItems(items);
-  }
+  };
 
-  getFilter = (filterData) => {
+  getFilter = filterData => {
     //list of array data as object & calling API.
-    let itemData = products.filter(i => i.type === filterData);
+    const itemData = products.filter(i => i.type === filterData);
     this.props.getItems(itemData);
-  }
+  };
 }
 
 RootContainer.propTypes = {

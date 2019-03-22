@@ -17,16 +17,15 @@ const getProductTypeFailed = error => ({
   error: true
 });
 
-
 export const getProductType = () => {
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(getProductTypeStarted());
-    
+
     // Used when get Success Response
     dispatch(getProductTypeSucceeded(productType));
 
-    // Used when get error 
+    // Used when get error
     dispatch(getProductTypeFailed("error.response"));
   };
 };

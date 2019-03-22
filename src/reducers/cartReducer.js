@@ -3,7 +3,7 @@ import initialState from "./initialState";
 
 const cartReducer = (state = initialState.cartData, action) => {
   switch (action.type) {
-    // Get Add Cart 
+    // Get Add Cart
     case types.ADD_TO_CART_ITEM_STARTED:
       return {
         ...state,
@@ -23,7 +23,6 @@ const cartReducer = (state = initialState.cartData, action) => {
         isLoading: false,
         error: action.payload
       };
-
 
     // Get Remove to Cart
     case types.REMOVE_TO_CART_ITEM_STARTED:

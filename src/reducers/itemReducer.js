@@ -41,7 +41,7 @@ const itemReducer = (state = initialState.itemData, action) => {
         isLoading: false,
         error: action.payload
       };
-      
+
     default:
       return state;
   }

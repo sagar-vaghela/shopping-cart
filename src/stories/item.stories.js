@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { withKnobs, object } from "@storybook/addon-knobs/react";
 import { ItemListStory } from "../components";
-import { specs, describe, it } from 'storybook-addon-specifications'
+import { specs, describe, it } from "storybook-addon-specifications";
 import expect from "expect";
 import * as images from "../lib/constants";
 import { products } from "../mock";
@@ -31,68 +31,66 @@ export const itemnoDiscription = {
 storiesOf("item", module)
   .addDecorator(withKnobs)
   .add("default", () => {
-    const app =  (
-        <ProductStory
-          item={object("item", {
-            ...item
-          })}
-        />
+    const app = (
+      <ProductStory
+        item={object("item", {
+          ...item
+        })}
+      />
     );
 
-    specs(() => describe('Item', function () {
-      it('Should have the description', function () {
-        expect("1").toContain('1');
-      });
-      it('Should have the prize', function () {
-        expect("900").toContain('900');
-      });
-    }));
+    specs(() =>
+      describe("Item", function() {
+        it("Should have the description", function() {
+          expect("1").toContain("1");
+        });
+        it("Should have the prize", function() {
+          expect("900").toContain("900");
+        });
+      })
+    );
     return app;
   })
   .add("No Description", () => {
-    const app =(
-        <ProductStory
-          item={object("Item", {
-            ...itemnoDiscription
-          })}
-        />
+    const app = (
+      <ProductStory
+        item={object("Item", {
+          ...itemnoDiscription
+        })}
+      />
     );
-    
-    specs(() => describe('items', function () {
-      it('Should not have the description', function () {
-        expect("1").toContain('1');
-      });
-    }));
 
-   return app;
+    specs(() =>
+      describe("items", function() {
+        it("Should not have the description", function() {
+          expect("1").toContain("1");
+        });
+      })
+    );
 
+    return app;
   })
   .add("Item List", () => {
-    const app = (
-      <ItemListStory items={object("Item", 
-        products
-      )} />
+    const app = <ItemListStory items={object("Item", products)} />;
+    specs(() =>
+      describe("Item Lst", function() {
+        it("List of Item Lists", function() {
+          expect("1").toContain("1");
+        });
+      })
     );
-    specs(() => describe('Item Lst', function () {
-      it('List of Item Lists', function () {
-        expect("1").toContain('1');
-      });
-    }));
 
-   return app;
+    return app;
   })
   .add("Empty Item List", () => {
-    const app = (
-      <ItemListStory items={object("Item", 
-        []
-      )} />
+    const app = <ItemListStory items={object("Item", [])} />;
+    specs(() =>
+      describe("Item Lst", function() {
+        it("Empty Item Lists", function() {
+          expect("1").toContain("1");
+        });
+      })
     );
-    specs(() => describe('Item Lst', function () {
-      it('Empty Item Lists', function () {
-        expect("1").toContain('1');
-      });
-    }));
 
-   return app;
-  })
-  ;
+    return app;
+  });

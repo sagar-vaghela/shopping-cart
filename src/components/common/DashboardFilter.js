@@ -7,44 +7,54 @@ import { getProductType } from "../../actions";
 class DashboardFilter extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
+    const { products } = this.props;
 
-      const { products } = this.props;
-  
     return (
       <div className="left-filters">
-        <AutosuggestElement suggestionValues={products} placeholder="Select Product" onChange={this.handelChange} />
-        <button type="button" className="btn btn-info" onClick={this.handleApplyClick} ><i className="fa fa-search"></i></button>
+        <AutosuggestElement
+          suggestionValues={products}
+          placeholder="Select Product"
+          onChange={this.handelChange}
+        />
+        <button
+          type="button"
+          className="btn btn-info"
+          onClick={this.handleApplyClick}
+        >
+          <i className="fa fa-search" />
+        </button>
       </div>
     );
   }
 
   componentDidMount = () => {
-    this.props.getProductType();    
-  }
+    this.props.getProductType();
+  };
 
-  handelChange = (filterData) => {
-    this.setState({filterData})
-  }
+  handelChange = filterData => {
+    this.setState({ filterData });
+  };
 
   handleApplyClick = () => {
     const { filterData } = this.state;
-    if (filterData && filterData.suggestions.length !== 0 && filterData.suggestions[0].name )
-    {
+    if (
+      filterData &&
+      filterData.suggestions.length !== 0 &&
+      filterData.suggestions[0].name
+    ) {
       this.props.handleApplyClick(filterData.suggestions[0].name);
     }
-  }
-
+  };
 }
 
 DashboardFilter.propTypes = {
   handleApplyClick: PropTypes.func.isRequired,
   getProductType: PropTypes.func.isRequired,
-  products: PropTypes.any,
+  products: PropTypes.any
 };
 
 const mapStateToProps = state => ({
