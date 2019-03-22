@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Select, Button } from "../../ui-kit";
+import { Select, Button, Label } from "../../ui-kit";
 import { Link } from "react-router-dom";
-import Item from "./Item";
+import { Item } from "./";
 import * as routes from "../../lib/constants";
 
 const sortOptions = [
@@ -36,7 +36,7 @@ const handleRenderItemList = (
     <div className="testClass">
       {
         <div className="form-group" id="productListSort">
-          <label>Sort By</label>
+          <Label htmlfor="Sort By" value="Sort By" />
           <Select
             options={sortOptions}
             className="form-control"
@@ -89,7 +89,8 @@ const ItemList = ({ items, handleAddToCart, handleRemoveToCart, isCart }) => {
 ItemList.propTypes = {
   items: PropTypes.any,
   handleAddToCart: PropTypes.func,
-  handleRemoveToCart: PropTypes.func
+  handleRemoveToCart: PropTypes.func,
+  isCart: PropTypes.bool.isRequired
 };
 
 export default ItemList;

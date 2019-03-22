@@ -14,8 +14,7 @@ class RootContainer extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      carts: props.cartData.carts,
-      items: props.items
+      carts: props.cartData.carts
     };
   }
 
@@ -46,13 +45,13 @@ class RootContainer extends Component {
   };
 
   handleAddToCart = e => {
-    let id = e.target.id;
+    const id = e.target.id;
     const { items, cartData } = this.props;
-    let itemData = items.filter(i => i.id !== parseInt(id));
+    const itemData = items.filter(i => i.id !== parseInt(id));
     this.props.getItems(itemData);
 
     const { carts } = this.state;
-    let cartItem = items.filter(i => i.id === parseInt(id));
+    const cartItem = items.filter(i => i.id === parseInt(id));
     const indexOf = carts.findIndex(c => {
       return c.id === parseInt(id);
     });
@@ -62,13 +61,13 @@ class RootContainer extends Component {
       carts.splice(indexOf, 1);
       carts.push(cartItem[0]);
     }
-    let count = cartData.cartCount + 1;
-    let paylod = { carts, count };
+    const count = cartData.cartCount + 1;
+    const paylod = { carts, count };
     this.props.addToCart(paylod);
   };
 
   handleRemoveToCart = e => {
-    let id = e.target.id;
+    const id = e.target.id;
     const { items, cartData } = this.props;
     const { carts } = this.state;
     const indexOf = carts.findIndex(c => {
@@ -77,12 +76,12 @@ class RootContainer extends Component {
 
     if (indexOf !== -1) {
       carts.splice(indexOf, 1);
-      let count = cartData.cartCount - 1;
-      let paylod = { carts, count };
+      const count = cartData.cartCount - 1;
+      const paylod = { carts, count };
       this.props.removeToCart(paylod);
     }
 
-    let productItem = products.filter(i => i.id === parseInt(id));
+    const productItem = products.filter(i => i.id === parseInt(id));
     const indexOfItem = items.findIndex(c => {
       return c.id === parseInt(id);
     });
@@ -98,7 +97,7 @@ class RootContainer extends Component {
 
   getFilter = filterData => {
     //list of array data as object & calling API.
-    let itemData = products.filter(i => i.type === filterData);
+    const itemData = products.filter(i => i.type === filterData);
     this.props.getItems(itemData);
   };
 }

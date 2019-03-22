@@ -1,7 +1,7 @@
 "use strict";
 
-const camelCase = "^[a-z][A-Za-z]*$";
-const PascalCase = "^[A-Z][A-Za-z]*$";
+const camelCase = "[a-z][A-Za-z]*$";
+const PascalCase = "[A-Z][A-Za-z]*$";
 
 module.exports = {
   plugins: ["filenames"],

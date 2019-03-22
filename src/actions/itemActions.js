@@ -18,7 +18,7 @@ const getItemsFailed = error => ({
 });
 
 export const getItems = payload => {
-  let productsData = payload ? payload : products;
+  const productsData = payload ? payload : products;
   return dispatch => {
     // Used for Start Fetching Data
     dispatch(getItemsStarted());
@@ -52,7 +52,7 @@ export const getItemDetail = id => {
     // Used for Start Fetching Data
     dispatch(getItemDetailStarted());
 
-    let productDetails =
+    const productDetails =
       products[products.findIndex(p => p.id === parseInt(id))];
     // Used when get Success Response)
     dispatch(getItemDetailSucceeded(productDetails));

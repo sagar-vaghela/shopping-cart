@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Button } from "../../ui-kit";
 
 const ProductStory = ({ item }) => {
@@ -42,5 +43,9 @@ const ProductStory = ({ item }) => {
     </div>
   );
 };
+
+ProductStory.propTypes = {
+  item: PropTypes.any 
+}
 
 export default ProductStory;

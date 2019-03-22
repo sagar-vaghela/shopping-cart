@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Badge = ({ count, s }) => {
-  let size = s ? s : "min";
-  let px = s && s.toLowerCase() === "max" ? 2 : 1;
+  const size = s ? s : "min";
+  const px = s && s.toLowerCase() === "max" ? 2 : 1;
   return (
     <span
       className={`${size} fa-stack fa-2x has-badge`}
@@ -14,7 +14,7 @@ const Badge = ({ count, s }) => {
   );
 };
 
-Badge.prototype = {
+Badge.propTypes = {
   count: PropTypes.number.isRequired,
   s: PropTypes.string
 };

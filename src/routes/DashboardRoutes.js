@@ -59,6 +59,7 @@ class DashboardRoutes extends Component {
 DashboardRoutes.propTypes = {
   items: PropTypes.any,
   handleAddToCart: PropTypes.func.isRequired,
+  handleRemoveToCart: PropTypes.func.isRequired,
   carts: PropTypes.array
 };
 
