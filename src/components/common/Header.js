@@ -5,7 +5,7 @@ import { Badge } from "../../ui-kit/common-ui-components";
 import * as routes from "../../lib/constants";
 import { DashboardFilter } from ".";
 
-const Header = ({ cartData, handleApplyClick}) => {
+const Header = ({ cartData, handleApplyClick }) => {
   return (
     <header>
       <nav className="fixed-top navbar navbar-expand-lg navbar-dark bg-dark">
@@ -42,8 +42,8 @@ const Header = ({ cartData, handleApplyClick}) => {
         </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   cartData: PropTypes.any,

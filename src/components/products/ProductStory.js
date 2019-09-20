@@ -45,7 +45,7 @@ const ProductStory = ({ item }) => {
 };
 
 ProductStory.propTypes = {
-  item: PropTypes.any 
-}
+  item: PropTypes.any
+};
 
 export default ProductStory;
